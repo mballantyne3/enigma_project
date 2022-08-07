@@ -19,7 +19,25 @@ RSpec.describe Enigma do
     )
   end
 
-  xit 'can encrypt a message without a key and date' do
+  it 'can encrypt a message without a key and date' do
 
+    allow(Date).to receive(:today).and_return(Date.parse('2022-08-07'))
+    allow(KeyGenerator).to receive(:generate).and_return('02341')
+    expect(enigma.encrypt("hello world")).to eq(
+      {
+      encryption: "og cvbkfyns",
+      key: "02341",
+      date: "070822"
+      })
+  end
+
+  it 'can decrypt an encrypted text' do
+
+    expect(enigma.decrypt("og cvbkfyns", "02341", "070822")).to eq(
+      {
+        encryption: "hello world",
+        key: "02341",
+        date: "070822"
+      })
   end
 end
