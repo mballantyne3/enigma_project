@@ -18,4 +18,8 @@ RSpec.describe Enigma do
       }
     )
   end
+
+  xit 'can encrypt a message without a key and date' do
+
+  end
 end
