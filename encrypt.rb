@@ -4,7 +4,9 @@ require './lib/enigma'
 input, output = ARGV
 incoming_message = File.read(input).strip
 
-result = Enigma.new.encrypt(incoming_message)
+enigma = Enigma.new
+
+result = enigma.encrypt(incoming_message)
 
 File.write(output, result[:encryption])
 
