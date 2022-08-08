@@ -7,9 +7,9 @@ class Enigma
 
     shifts = generate_shift(key, date)
 
-    encrypted_message = message.chars.map.with_index do |letter, i|
+    encrypted_message = message.chars.map.with_index do |letter, index|
       letter_position = CHARACTER_SET.index(letter.downcase)
-      shifted_position = letter_position + shifts[i % shifts.length]
+      shifted_position = letter_position + shifts[index % shifts.length]
       CHARACTER_SET[shifted_position % CHARACTER_SET.length]
     end.join
 
@@ -21,9 +21,9 @@ class Enigma
 
     shifts = generate_shift(key, date)
 
-    decrypted_message = ciphertext.chars.map.with_index do |letter, i|
+    decrypted_message = ciphertext.chars.map.with_index do |letter, index|
       letter_position = CHARACTER_SET.index(letter)
-      shifted_position = letter_position - shifts[i % shifts.length]
+      shifted_position = letter_position - shifts[index % shifts.length]
       CHARACTER_SET[shifted_position % CHARACTER_SET.length]
     end.join
 
