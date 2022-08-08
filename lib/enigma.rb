@@ -4,8 +4,7 @@ require './lib/offset_generator'
 class Enigma
   CHARACTER_SET = ("a".."z").to_a << " "
 
-  def encrypt(message, key = nil, date = nil)
-    key ||= KeyGenerator.generate
+  def encrypt(message, key = KeyGenerator.generate, date = nil)
     date ||= Date.today.strftime("%d%m%y")
 
     shifts = generate_shift(key, date)
