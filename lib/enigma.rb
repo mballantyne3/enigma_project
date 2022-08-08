@@ -14,9 +14,7 @@ class Enigma
     { encryption: encrypted_message, key: key, date: date }
   end
 
-  def decrypt(ciphertext, key, date = nil)
-    date ||= Date.today.strftime("%d%m%y")
-
+  def decrypt(ciphertext, key, date = Date.today.strftime("%d%m%y"))
     shifts = generate_shift(key, date)
 
     decrypted_message = ciphertext.chars.map.with_index do |letter, index|
