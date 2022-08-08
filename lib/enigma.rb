@@ -8,9 +8,7 @@ class Enigma
     shifts = generate_shift(key, date)
 
     encrypted_message = message.chars.map.with_index do |letter, index|
-      letter_position = CHARACTER_SET.index(letter.downcase)
-      shifted_position = letter_position + shifts[index % shifts.length]
-      CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+      encrypt_letter(index, letter, shifts)
     end.join
 
     { encryption: encrypted_message, key: key, date: date }
@@ -31,6 +29,12 @@ class Enigma
   end
 
   private
+
+  def encrypt_letter(index, letter, shifts)
+    letter_position = CHARACTER_SET.index(letter.downcase)
+    shifted_position = letter_position + shifts[index % shifts.length]
+    CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+  end
 
   def generate_shift(key, date)
     ka, kb, kc, kd = key[..1], key[1..2], key[2..3], key[3..4]
