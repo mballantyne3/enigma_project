@@ -7,7 +7,9 @@ class Enigma
 
     shifts = generate_shift(key, date)
 
-    encrypted_message = message.chars.map.with_index { |letter, index| encrypt_letter(index, letter, shifts) }.join
+    encrypted_message = message.chars.map.with_index do |letter, index|
+      encrypt_letter(index, letter, shifts)
+    end.join
 
     { encryption: encrypted_message, key: key, date: date }
   end
