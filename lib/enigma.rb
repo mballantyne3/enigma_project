@@ -1,3 +1,6 @@
+require './lib/key_generator'
+require './lib/offset_generator'
+
 class Enigma
   CHARACTER_SET = ("a".."z").to_a << " "
 
