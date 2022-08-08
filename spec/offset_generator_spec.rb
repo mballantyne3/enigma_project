@@ -1,5 +1,5 @@
+require '../spec/spec_helper'
 require './lib/offset_generator'
-require 'date'
 
 RSpec.describe OffsetGenerator do
   it 'generates an offset' do

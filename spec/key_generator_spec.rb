@@ -1,3 +1,4 @@
+require '../spec/spec_helper'
 require './lib/key_generator'
 
 RSpec.describe KeyGenerator do
