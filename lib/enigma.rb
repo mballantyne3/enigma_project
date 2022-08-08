@@ -20,9 +20,7 @@ class Enigma
     shifts = generate_shift(key, date)
 
     decrypted_message = ciphertext.chars.map.with_index do |letter, index|
-      letter_position = CHARACTER_SET.index(letter)
-      shifted_position = letter_position - shifts[index % shifts.length]
-      CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+      decrypt_letter(index, letter, shifts)
     end.join
 
     { encryption: decrypted_message, key: key, date: date }
@@ -33,6 +31,12 @@ class Enigma
   def encrypt_letter(index, letter, shifts)
     letter_position = CHARACTER_SET.index(letter.downcase)
     shifted_position = letter_position + shifts[index % shifts.length]
+    CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+  end
+
+  def decrypt_letter(index, letter, shifts)
+    letter_position = CHARACTER_SET.index(letter)
+    shifted_position = letter_position - shifts[index % shifts.length]
     CHARACTER_SET[shifted_position % CHARACTER_SET.length]
   end
 
