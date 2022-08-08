@@ -15,7 +15,7 @@ class Enigma
     ]
 
     encrypted_message = message.chars.map.with_index do |letter, i|
-      letter_position = CHARACTER_SET.index(letter)
+      letter_position = CHARACTER_SET.index(letter.downcase)
       shifted_position = letter_position + shifts[i % shifts.length]
       CHARACTER_SET[shifted_position % CHARACTER_SET.length]
     end.join
@@ -24,6 +24,8 @@ class Enigma
   end
 
   def decrypt(ciphertext, key, date = nil)
+    date ||= Date.today.strftime("%d%m%y")
+
     ka, kb, kc, kd = key[..1], key[1..2], key[2..3], key[3..4]
     oa, ob, oc, od = OffsetGenerator.generate(date)
     shifts = [
