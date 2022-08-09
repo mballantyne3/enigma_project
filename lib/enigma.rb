@@ -8,7 +8,6 @@ class Enigma
     shifts = generate_shift(key, date)
 
     encrypted_message = message.chars.map.with_index do |letter, index|
-      require 'pry';binding.pry
       encrypt_letter(index, letter, shifts)
     end.join
 
