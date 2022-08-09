@@ -8,7 +8,7 @@ enigma = Enigma.new
 
 result = enigma.decrypt(incoming_encryption, key, date)
 
-File.write(output, result[:encryption])
+File.write(output, result[:decryption])
 
 puts "Created '#{output}' with the key #{result[:key]} and date #{result[:date]}"
 
