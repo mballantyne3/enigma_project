@@ -26,14 +26,16 @@ class Enigma
   private
 
   def encrypt_letter(index, letter, shifts)
-    letter_position = CHARACTER_SET.index(letter.downcase)
-    shifted_position = letter_position + shifts[index % shifts.length]
-    CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+    current_shift = shifts[index % shifts.length] # selects A, B, C, or D (with wrapping back to A)
+    letter_position = CHARACTER_SET.index(letter.downcase) # numeric position of our letter
+    letter_position += current_shift # add the current shift
+    letter_position %= CHARACTER_SET.length # wrap back to the beginning of the alphabet, if necessary
+    CHARACTER_SET[letter_position] # grab that character
   end
 
   def decrypt_letter(index, letter, shifts)
     letter_position = CHARACTER_SET.index(letter.downcase)
-    shifted_position = letter_position - shifts[index % shifts.length]
-    CHARACTER_SET[shifted_position % CHARACTER_SET.length]
+    letter_position -= shifts[index % shifts.length]
+    CHARACTER_SET[letter_position % CHARACTER_SET.length]
   end
 end
