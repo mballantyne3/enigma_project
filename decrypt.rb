@@ -1,4 +1,3 @@
-require 'date'
 require './lib/enigma'
 
 input, output, key, date = ARGV
