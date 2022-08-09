@@ -32,7 +32,7 @@ class Enigma
   end
 
   def decrypt_letter(index, letter, shifts)
-    letter_position = CHARACTER_SET.index(letter)
+    letter_position = CHARACTER_SET.index(letter.downcase)
     shifted_position = letter_position - shifts[index % shifts.length]
     CHARACTER_SET[shifted_position % CHARACTER_SET.length]
   end
