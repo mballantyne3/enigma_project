@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-09T13:48:09-06:00">2022-08-09T13:48:09-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-09T14:16:18-06:00">2022-08-09T14:16:18-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -263,7 +263,7 @@
 
             
 
-            <code class="ruby">    shifts = ShiftGenerator.generate(key, date)</code>
+            <code class="ruby">    shifts, key, date = ShiftGenerator.generate(key, date)</code>
           </li>
         </div>
       
@@ -296,7 +296,7 @@
 
             
 
-            <code class="ruby">      encrypt_letter(index, letter, shifts[:shift])</code>
+            <code class="ruby">      encrypt_letter(index, letter, shifts)</code>
           </li>
         </div>
       
@@ -329,7 +329,7 @@
 
             
 
-            <code class="ruby">    { encryption: encrypted_message, key: shifts[:key], date: shifts[:date] }</code>
+            <code class="ruby">    { encryption: encrypted_message, key: key, date: date }</code>
           </li>
         </div>
       
@@ -373,7 +373,7 @@
 
             
 
-            <code class="ruby">    shifts = ShiftGenerator.generate(key, date)</code>
+            <code class="ruby">    shifts, key, date = ShiftGenerator.generate(key, date)</code>
           </li>
         </div>
       
@@ -406,7 +406,7 @@
 
             
 
-            <code class="ruby">      decrypt_letter(index, letter, shifts[:shift])</code>
+            <code class="ruby">      decrypt_letter(index, letter, shifts)</code>
           </li>
         </div>
       
@@ -439,7 +439,7 @@
 
             
 
-            <code class="ruby">    { encryption: decrypted_message, key: shifts[:key], date: shifts[:date] }</code>
+            <code class="ruby">    { decryption: decrypted_message, key: key, date: date }</code>
           </li>
         </div>
       
@@ -571,7 +571,7 @@
 
             
 
-            <code class="ruby">    letter_position = CHARACTER_SET.index(letter)</code>
+            <code class="ruby">    letter_position = CHARACTER_SET.index(letter.downcase)</code>
           </li>
         </div>
       
@@ -972,7 +972,7 @@
 
             
 
-            <code class="ruby">    shift = [</code>
+            <code class="ruby">    shifts = [</code>
           </li>
         </div>
       
@@ -1049,7 +1049,7 @@
 
             
 
-            <code class="ruby">    { shift: shift, key: key, date: date }</code>
+            <code class="ruby">    [shifts, key, date]</code>
           </li>
         </div>
       

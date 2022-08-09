@@ -20,7 +20,7 @@ class Enigma
       decrypt_letter(index, letter, shifts)
     end.join
 
-    { encryption: decrypted_message, key: key, date: date }
+    { decryption: decrypted_message, key: key, date: date }
   end
 
   private

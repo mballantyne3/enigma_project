@@ -36,18 +36,18 @@ RSpec.describe Enigma do
 
     expect(enigma.decrypt("og cvbkfyns", "02341", "070822")).to eq(
       {
-        encryption: "hello world",
+        decryption: "hello world",
         key: "02341",
         date: "070822"
       })
   end
 
-  it 'can decrypt an encrypted test without a date' do
+  it 'can decrypt an encrypted text without a date' do
 
     allow(Date).to receive(:today).and_return(Date.parse('2022-08-07'))
     expect(enigma.decrypt("og cvbkfyns", "02341")).to eq(
       {
-        encryption: "hello world",
+        decryption: "hello world",
         key: "02341",
         date: "070822"
       })
