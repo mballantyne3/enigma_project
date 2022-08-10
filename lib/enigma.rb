@@ -2,7 +2,7 @@ require './lib/shift_generator'
 
 class Enigma
   CHARACTER_SET = ("a".."z").to_a << " "
-  SPECIAL_CHARACTERS = "!@#$%^&*()_-{}[]?><\\/.,+="
+  SPECIAL_CHARACTERS = "!@#$%^&*()_-{}[]''?><\\/.,+="
 
   def encrypt(message, key = nil, date = nil)
     shifts, key, date = ShiftGenerator.generate(key, date)
@@ -27,7 +27,7 @@ class Enigma
   private
 
   def encrypt_letter(index, letter, shifts)
-    return letter if SPECIAL_CHARACTERS.include?(letter)
+    return letter if SPECIAL_CHARACTERS.include?(letter) # we don't encrypt special characters
     current_shift = shifts[index % shifts.length] # selects A, B, C, or D (with wrapping back to A)
     letter_position = CHARACTER_SET.index(letter.downcase) # numeric position of our letter
     letter_position += current_shift # add the current shift
